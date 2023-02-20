@@ -1,7 +1,37 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class stockMarket {
+    public static void main(String[] args) throws FileNotFoundException {
+        // Open input and output files
+        File inputFile = new File("input.txt");
+        File outputFile = new File("output.txt");
+        Scanner scanner = new Scanner(inputFile);
+        PrintWriter writer = new PrintWriter(outputFile);
+
+        // Read input array from file
+        int n = scanner.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+        // Find the longest non-decreasing streak
+        List<Integer> longestStreak = stockMarket(arr);
+
+        // Write output to file
+        for (int i = 0; i < longestStreak.size(); i++) {
+            writer.println(longestStreak.get(i));
+        }
+
+        // Close input and output files
+        scanner.close();
+        writer.close();
+    }
     public static List<Integer> stockMarket(int[] arr) {
         return stockMarketHelper(arr, 0, arr.length - 1);
     }
@@ -68,11 +98,5 @@ public class stockMarket {
             res.add(elements.get(i));
         }
         return res;
-    }
-
-    public static void main(String[] args) {
-        int[] arr = {42,40 ,45,45,44,43,50,49};
-        List<Integer> longestStreak = stockMarket(arr);
-        System.out.println(longestStreak);
     }
 }
