@@ -17,9 +17,9 @@ public class stockMarket {
             List<Integer> rightStreak = stockMarketHelper(arr, mid + 1, right);
             List<Integer> midStreak = midStreak(arr, left, mid, right);
             List<Integer> longestStreak;
-            if (leftStreak[0] >= rightStreak[0] && leftStreak[0] >= midStreak[0]) {
+            if (leftStreak.size() >= rightStreak.size() && leftStreak.size() >= midStreak.size()) {
                 longestStreak = leftStreak;
-            } else if (rightStreak[0] >= leftStreak[0] && rightStreak[0] >= midStreak[0]) {
+            } else if (rightStreak.size() >= leftStreak.size() && rightStreak.size() >= midStreak.size()) {
                 longestStreak = rightStreak;
             } else {
                 longestStreak = midStreak;
@@ -42,10 +42,10 @@ public class stockMarket {
             }
         }
 
-        int rightMin = arr[mid + 1];
+        int rightMin = arr[mid];
         int rightCount = 0;
-        int rightIndex = mid + 1;
-        for (int i = mid + 1; i <= right; i++) {
+        int rightIndex = mid ;
+        for (int i = mid ; i <= right; i++) {
             if (arr[i] >= rightMin) {
                 rightMin = arr[i];
                 rightCount++;
@@ -55,7 +55,7 @@ public class stockMarket {
             }
         }
 
-        int totalCount = leftCount + rightCount;
+        int totalCount = leftCount + rightCount -1;
         List<Integer> elements = new ArrayList<Integer>();
         for (int i = leftIndex; i <= rightIndex; i++) {
             elements.add(arr[i]);
@@ -71,7 +71,7 @@ public class stockMarket {
     }
 
     public static void main(String[] args) {
-        int[] arr = {};
+        int[] arr = {42,40 ,45,45,44,43,50,49};
         List<Integer> longestStreak = stockMarket(arr);
         System.out.println(longestStreak);
     }
