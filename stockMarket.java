@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class stockMarket {
     public static void main(String[] args) throws FileNotFoundException {
         // Open input and output files
-        File inputFile = new File("input.txt");
-        File outputFile = new File("output.txt");
+        File inputFile = new File("infile.txt");
+        File outputFile = new File("outfile.txt");
         Scanner scanner = new Scanner(inputFile);
         PrintWriter writer = new PrintWriter(outputFile);
 
