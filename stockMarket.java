@@ -33,7 +33,7 @@ public class stockMarket {
         writer.close();
     }
     public static List<Integer> stockMarket(int[] arr) {
-        return stockMarketHelper(arr, 0, arr.length - 1);
+        return stockMarketHelper(arr, 1, arr.length - 1);
     }
 
     public static List<Integer> stockMarketHelper(int[] arr, int left, int right) {
